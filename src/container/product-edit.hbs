@@ -1,0 +1,101 @@
+{{!
+Це код container файлу для index сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+}}
+<main class='main'>
+  <section>
+    <div class='form'>
+      <h1 class='form_t'>Інформація про товар</h1>
+      {{#with data.product}}
+        <form
+          method='POST'
+          action='/product-edit?id={{id}}'
+        >
+          <div class='form_content'>
+            <div class='form_content_3'>
+              <div
+                class='form_field product_field edit_field'
+              >
+                <label for='name' class='form_label'>Назва
+                  товару</label>
+                <input
+                  type='name'
+                  name='name'
+                  class='form_input'
+                  value='{{name}}'
+                />
+              </div>
+              <div
+                class='form_field product_field edit_field'
+              >
+                <label
+                  for='price'
+                  class='form_label'
+                >Ціна</label>
+                <input
+                  type='price'
+                  name='price'
+                  class='form_input'
+                  value='{{price}}'
+                />
+              </div>
+              <div
+                class='form_field product_field edit_field'
+              >
+                <label
+                  for='id'
+                  class='form_label'
+                >ID</label>
+                <input
+                  type='id'
+                  name='id'
+                  class='form_input'
+                  value='{{id}}'
+                />
+              </div>
+            </div>
+          </div>
+          <div class='form_field field_desc'>
+            <label
+              for='description'
+              class='form_label'
+            >Короткий опис товару</label>
+            <input
+              type='description'
+              name='description'
+              class='form_input'
+              value='{{description}}'
+            />
+          </div>
+          <div class='text1'>Відображується у картці товару</div>
+          <button
+            class='form_button button_new'
+            action='/product-edit?id={{id}}'
+          >Зберегти оновлення</button>
+        </form>
+        <form
+          method='GET'
+          action='/product-delete?id={{id}}'
+        >
+          <input
+            hidden
+            type='id'
+            name='id'
+            class='form_input'
+            value='{{id}}'
+          />
+          <button
+            class='form_button button_new red'
+          >Видалити товар</button>
+        </form>
+      {{/with}}
+    </div>
+  </section>
+</main>
+
+{{!
+Цей код містить лише те, що буде виводитись в
+
+<body>
+    Адже наш layout/default.hbs має вже структуру HTML
+    }}

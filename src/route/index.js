@@ -51,6 +51,56 @@ class User {
   }
 }
 // ================================================================
+class Product {
+  static #list = []
+  constructor(name, price, description) {
+    this.name = name
+    this.price = price
+    this.description = description
+    this.id = Math.round(Math.random() * 100000)
+    this.createData = new Date().toISOString()
+  }
+  static getList = () => this.#list
+  static add = (product) => {
+    this.#list.push(product)
+  }
+  static getById = (id) =>
+    this.#list.find((product) => product.id === id)
+
+  static updateById = (
+    id,
+    { name, price, description },
+  ) => {
+    const product = this.getById(id)
+    if (product) {
+      this.update(product, data)
+
+      return true
+    } else {
+      return false
+    }
+  }
+  static deleteById = (id) => {
+    const index = this.#list.findIndex(
+      (product) => product.id === id,
+    )
+    if (index !== -1) {
+      this.#list.splice(index, 1)
+      return true
+    } else {
+      return false
+    }
+  }
+  static update = (
+    product,
+    { name, price, description },
+  ) => {
+    product.name = name
+    product.price = price
+    product.description = description
+  }
+}
+// ================================================================
 // router.get Створює нам один ентпоїнт
 
 // ↙️ тут вводимо шлях (PATH) до сторінки
@@ -112,6 +162,75 @@ router.post('/user-update', function (req, res) {
     info: result
       ? 'Email пошта оновлена'
       : 'Сталася помилка',
+  })
+})
+// ================================================================
+// Сторінка створення нового продукту
+router.get('/product', function (req, res) {
+  res.render('product-create', {
+    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+    style: 'index',
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+// ================================================================
+// Результат створення товару
+router.post('/product-create', function (req, res) {
+  const { name, price, description } = req.body
+  const product = new Product(name, price, description)
+  Product.add(product)
+  res.render('alert', {
+    style: 'alert',
+    info: 'Товар доданий до списку товарів',
+  })
+})
+// ================================================================
+// Сторінка списку всіх продуктів
+router.get('/product-list', function (req, res) {
+  // res.render генерує нам HTML сторінку
+  const list = Product.getList()
+  res.render('product-list', {
+    style: 'index',
+    data: {
+      products: {
+        list,
+      },
+    },
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+// ================================================================
+// Отримаємо форму редагування
+router.get('/product-edit', function (req, res) {
+  const { id } = req.query
+  const product = Product.getById(Number(id))
+  const list = [product]
+  res.render('product-edit', {
+    style: 'index',
+    data: {
+      product,
+    },
+  })
+})
+// ================================================================
+// Редагуємо карточку
+router.post('/product-edit', function (req, res) {
+  const { name, price, description, id } = req.body
+  const product = Product.getById(Number(id))
+  Product.update(product, { name, price, description })
+  res.render('alert', {
+    style: 'alert',
+    info: 'Інформація про товар оновлена',
+  })
+})
+// ================================================================
+// Видаляємо товар
+router.get('/product-delete', function (req, res) {
+  const { id } = req.query
+  Product.deleteById(Number(id))
+  res.render('alert', {
+    style: 'alert',
+    info: 'Товар видалений',
   })
 })
 // Підключаємо роутер до бек-енду
