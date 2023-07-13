@@ -1,0 +1,32 @@
+a {
+  color: black;
+}
+
+.al {
+  display: flex;
+  border: 1px solid #ddd;
+  padding: 30px;
+  margin: 10px;
+  border-radius: 10px;
+  justify-content: space-between;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+}
+.al_1 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.al_2 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+h1 {
+  font-size: 24px;
+}
+.button {
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 25px;
+}

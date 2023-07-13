@@ -3,73 +3,112 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
 }}
 
-<main class="main">
-    <section>
-        <div class="form">
-            <h1 class="form_title">Створити користувача</h1>
-            <form method="POST" action="/user-create">
-                <div class="form_content">
-                    <div class="form_field">
-                        <label for="email" class="form_label">Email адреса:</label>
-                        <input type="email" name="email" class="form_input">
-                    </div>
-                    <div class="form_field">
-                        <label for="login" class="form_label">Нікнейм:</label>
-                        <input type="login" name="login" class="form_input">
-                    </div>
-                    <div class="form_field">
-                        <label for="password" class="form_label">Пароль:</label>
-                        <input type="password" name="password" class="form_input">
-                    </div>
-                    <button class="form_button">Створити</button>
-                </div>
-            </form>
-        </div>
-    </section>
-    <section>
-        <div class="form">
-            <h1 class="form_title">Список користувачів</h1>
-            <div class="user_list">
-                {{#with data.users}}
-                {{#if isEmpty}}
-                <mark>Пустий</mark>
-                {{else}}
-                <ul>
-                    {{#each list}}
-                    <li>{{email}} | {{login}} | {{id}}<a href="/user-delete?id={{id}}"> (видалити)</a>
-                    </li>
-                    {{/each}}
-                </ul>
-                {{/if}}
-                {{/with}}
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="form">
-            <h1 class="form_title">Оновити пошту користувача</h1>
-            <form method="POST" action="/user-update">
-                <div class="form_content">
-                    <div class="form_field">
-                        <label for="id" class="form_label">ID:</label>
-                        <input type="id" name="id" class="form_input">
-                    </div>
-                    <div class="form_field">
-                        <label for="email" class="form_label">New Email адреса:</label>
-                        <input type="email" name="email" class="form_input">
-                    </div>
+<main class='main'>
+  <form action='/product'>
+    <button class='button_new small'>Додати товар</button>
+  </form>
 
-                    <div class="form_field">
-                        <label for="password" class="form_label">Пароль:</label>
-                        <input type="password" name="password" class="form_input">
-                    </div>
-                    <button class="form_button">Send</button>
-                </div>
-            </form>
+  <section>
+    <div class='form'>
+      <h1 class='form_title'>Створити користувача</h1>
+      <form method='POST' action='/user-create'>
+        <div class='form_content'>
+          <div class='form_field'>
+            <label for='email' class='form_label'>Email
+              адреса:</label>
+            <input
+              type='email'
+              name='email'
+              class='form_input'
+            />
+          </div>
+          <div class='form_field'>
+            <label
+              for='login'
+              class='form_label'
+            >Нікнейм:</label>
+            <input
+              type='login'
+              name='login'
+              class='form_input'
+            />
+          </div>
+          <div class='form_field'>
+            <label
+              for='password'
+              class='form_label'
+            >Пароль:</label>
+            <input
+              type='password'
+              name='password'
+              class='form_input'
+            />
+          </div>
+          <button class='form_button'>Створити</button>
         </div>
-    </section>
+      </form>
+    </div>
+  </section>
+  <section>
+    <div class='form'>
+      <h1 class='form_title'>Список користувачів</h1>
+      <div class='user_list'>
+        {{#with data.users}}
+          {{#if isEmpty}}
+            <mark>Пустий</mark>
+          {{else}}
+            <ul>
+              {{#each list}}
+                <li>{{email}}
+                  |
+                  {{login}}
+                  |
+                  {{id}}<a href='/user-delete?id={{id}}'>
+                    (видалити)</a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        {{/with}}
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class='form'>
+      <h1 class='form_title'>Оновити пошту користувача</h1>
+      <form method='POST' action='/user-update'>
+        <div class='form_content'>
+          <div class='form_field'>
+            <label for='id' class='form_label'>ID:</label>
+            <input type='id' name='id' class='form_input' />
+          </div>
+          <div class='form_field'>
+            <label for='email' class='form_label'>New Email
+              адреса:</label>
+            <input
+              type='email'
+              name='email'
+              class='form_input'
+            />
+          </div>
+
+          <div class='form_field'>
+            <label
+              for='password'
+              class='form_label'
+            >Пароль:</label>
+            <input
+              type='password'
+              name='password'
+              class='form_input'
+            />
+          </div>
+          <button class='form_button'>Send</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </main>
-
 
 {{!
 Цей код містить лише те, що буде виводитись в
