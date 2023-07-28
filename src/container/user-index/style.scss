@@ -1,0 +1,133 @@
+@use '../../lib/service.scss' as s;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: s.space(4);
+  gap: s.space(8);
+  &_title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: s.space(1);
+    border-bottom: 1px solid s.color('light');
+  }
+  &_content {
+    display: grid;
+    gap: s.space(6);
+  }
+  &_field {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(2);
+  }
+  &_label {
+    font-size: 14px;
+  }
+  &_input {
+    border: 1px solid s.color('light');
+    padding: s.space(2);
+  }
+  &_button {
+    border: 1px solid s.color('light');
+    padding: s.space(2);
+    border-radius: 20px;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: s.space(10);
+}
+
+.user_list {
+  li {
+    padding-right: 15px;
+    padding-top: 5px;
+  }
+}
+input {
+  border-radius: 5px;
+}
+.button {
+  background-color: rgb(0, 0, 246);
+  color: white;
+  border-radius: 5px;
+  padding: 10px 100vw;
+}
+.product_field {
+  width: 50%;
+}
+.form_content_2 {
+  display: flex;
+  gap: 15px;
+}
+.card {
+  display: flex;
+  padding: 10px;
+  gap: 20px;
+}
+.card-item {
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  width: 300px;
+  border-radius: 5px;
+  height: 250px;
+}
+.p_id {
+  color: #7b7777;
+}
+.card_title {
+  font-size: 24px;
+  word-wrap: break-word;
+}
+.card_desc {
+  word-wrap: break-word;
+}
+.card_price {
+  font-size: 24px;
+}
+.card_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+a {
+  text-decoration: none;
+}
+.form_t {
+  font-size: 24px;
+  font-weight: bold;
+}
+.field_desc {
+  margin-top: 20px;
+}
+.text1 {
+  font-size: 12px;
+  margin-bottom: 30px;
+  color: #7b7777;
+}
+.button_new {
+  width: 100%;
+  background-color: #0d6efd;
+  color: white;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+.form_content_3 {
+  display: flex;
+  gap: 15px;
+}
+.edit_field {
+  width: 33%;
+}
+.red {
+  background-color: red;
+}
+.small {
+  width: 20%;
+  margin-top: 5px;
+  margin-left: 5px;
+}
